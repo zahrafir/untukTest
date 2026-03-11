@@ -1,1 +1,1 @@
-yolo lagi
+yolo lagi 2x
