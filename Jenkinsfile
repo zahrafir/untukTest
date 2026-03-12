@@ -17,9 +17,9 @@ pipeline {
         stage ('Inject ENV'){
             steps {
                 withCredentials([file(credentialsId: 'env-file', variable: 'ENVFILE')]){
-                    sh '''
+                    bat '''
                     rm -f .env
-                    cp "$ENVFILE" .env
+                    copy '%ENVFILE' .env
                     '''
                 }
             }
@@ -27,7 +27,7 @@ pipeline {
 
         stage('Deploy'){
             steps {
-                sh '''
+                bat '''
                     echo "MONGO_URI=mongodb+srv://zahralf37_db_user:zahra123@project1.wgobyav.mongodb.net/testauth" > .env
                     echo "EMAIL_PASS=aanr chad gunn zfrh" >> .env
                     echo "EMAIL_USER=zahralf37@gmail.com" >> .env
